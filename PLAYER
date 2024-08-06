@@ -1,0 +1,37 @@
+public class player : MonoBehaviour
+{
+    public float altura = 0f; //altura do pulo do player
+    public float velocidadedoPulo = 0f; //velocidade de como o pulo do boneco sobe e desce
+    bool teclaEspacoApertada;
+
+    public float Altura { get => altura;  }
+    public float VelocidadedoPulo { get => velocidadedoPulo; }
+
+
+    public void checarPulo() //este método vai verificar qual tecla será o pulo
+    {
+        if (teclaEspacoApertada==true) //isso fará com que verifique se a tal tecla foi apertada
+        {
+            velocidadedoPulo = 10; //a velocidade do pulo aumenta
+        }
+    }
+
+    public void Atualização () //este método vai fazer com o personagem suba e desca
+    {
+        altura += velocidadedoPulo; //vai ser atualizado a altura conforme o player for pulando
+        velocidadedoPulo -= 1; //quando menor o número, mais devagar o player desce
+
+        if (altura < 0) //se a altura for menor que 0, o player para no chão
+        {
+            altura = 0;
+            velocidadedoPulo = 0;
+        }
+    }
+
+    public void AtualizarJogo()
+    {
+        checarPulo();
+        Atualização();
+    }
+     
+}
